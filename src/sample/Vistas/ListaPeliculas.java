@@ -2,11 +2,14 @@ package sample.Vistas;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import sample.Componentes.ButtonCell;
 import sample.Modelos.PeliculaDAO;
 
 public class ListaPeliculas  extends Stage{
@@ -29,7 +32,7 @@ public class ListaPeliculas  extends Stage{
         CrearTabla();
         btnAgregar = new Button("Agregar");
         vBox.getChildren().addAll(tbvPeliculas,btnAgregar);
-        escena = new Scene(vBox,250,180);
+        escena = new Scene(vBox,700,200);
     }
 
     private void CrearTabla(){
@@ -52,7 +55,24 @@ public class ListaPeliculas  extends Stage{
         TableColumn<PeliculaDAO, Integer> tbcIdCategoria = new TableColumn<>("Categoria");
         tbcIdCategoria.setCellValueFactory(new PropertyValueFactory<>("idCategoria"));
 
-        tbvPeliculas.getColumns().addAll(tbcIdPelicula,tbcNomPelicula,tbcDuracion,tbcDescPelicula,tbcClasePelicula,tbcIdCategoria);
+        TableColumn<PeliculaDAO,String> tbcEditar = new TableColumn<>("Editar");
+        tbcEditar.setCellFactory(new Callback<TableColumn<PeliculaDAO, String>, TableCell<PeliculaDAO, String>>() {
+            @Override
+            public TableCell<PeliculaDAO, String> call(TableColumn<PeliculaDAO, String> param) {
+                return new ButtonCell(1);
+            }
+        });
+
+
+        TableColumn<PeliculaDAO,String> tbcEliminar = new TableColumn<>("Eliminar");
+        tbcEliminar.setCellFactory(new Callback<TableColumn<PeliculaDAO, String>, TableCell<PeliculaDAO, String>>() {
+            @Override
+            public TableCell<PeliculaDAO, String> call(TableColumn<PeliculaDAO, String> param) {
+                return new ButtonCell(2);
+            }
+        });
+
+        tbvPeliculas.getColumns().addAll(tbcIdPelicula,tbcNomPelicula,tbcDuracion,tbcDescPelicula,tbcClasePelicula,tbcIdCategoria,tbcEditar,tbcEliminar);
         tbvPeliculas.setItems(new PeliculaDAO().SELECCIONAR());
     }
 

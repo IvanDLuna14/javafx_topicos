@@ -14,7 +14,7 @@ public class ButtonCell extends TableCell<PeliculaDAO,String>
     public ButtonCell(int opc){
 
         this.opc = opc;
-        objP = ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+
         if( this.opc == 1 ) {
             celdaBoton = new Button("Editar");
             celdaBoton.setOnAction(event -> Editar());
@@ -32,6 +32,7 @@ public class ButtonCell extends TableCell<PeliculaDAO,String>
     }
 
     private void Eliminar(){
+        objP = ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
         objP.ELIMINAR();
     }
 
