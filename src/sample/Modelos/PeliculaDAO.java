@@ -78,7 +78,7 @@ public class PeliculaDAO {
 
     public void ACTUALIZAR(){
         String consulta = "UPDATE tblpelicula SET nomPelicula = '"+nomPelicula+"', duracion = "+duracion+"," +
-                "descPelicula = '"+descPelicula+"',clase='"+clase+"',idCategoria="+idCategoria+") where" +
+                "descPelicula = '"+descPelicula+"',clase='"+clase+"',idCategoria="+idCategoria+" where" +
                 " idpelicula = "+idPelicula;
         try {
             Statement stmt = Conexion.con.createStatement();

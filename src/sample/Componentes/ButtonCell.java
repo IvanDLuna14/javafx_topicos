@@ -4,6 +4,7 @@ package sample.Componentes;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import sample.Modelos.PeliculaDAO;
+import sample.Vistas.Pelicula;
 
 public class ButtonCell extends TableCell<PeliculaDAO,String>
 {
@@ -29,11 +30,17 @@ public class ButtonCell extends TableCell<PeliculaDAO,String>
 
         // Aqui va el codigo para mostrar el formulario de edicion
 
+        objP = ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+        //System.out.println(objP.getDescPelicula());
+        new Pelicula(ButtonCell.this.getTableView()).setPeliculaDAO(objP);
+
     }
 
     private void Eliminar(){
         objP = ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
         objP.ELIMINAR();
+        ButtonCell.this.getTableView().setItems(objP.SELECCIONAR());
+        ButtonCell.this.getTableView().refresh();
     }
 
     @Override

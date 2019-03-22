@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.Componentes.Vengadores;
 import sample.Modelos.Conexion;
 import sample.Vistas.Calculadora;
 import sample.Vistas.ListaPeliculas;
@@ -47,6 +48,17 @@ public class Main extends Application implements EventHandler{
         primaryStage.setMaximized(true);
         primaryStage.addEventHandler(WindowEvent.WINDOW_SHOWN,this);
         primaryStage.show();
+
+        new Vengadores("Thor").start();
+        new Vengadores("Capitan America").start();
+        new Vengadores("Hulk").start();
+        new Vengadores("Iron Man").start();
+        new Vengadores("Spider Man").start();
+        new Vengadores("Black Panther").start();
+        new Vengadores("Pantera Rosa :)").start();
+
+
+
     }
 
     public void CreateMenu(){
