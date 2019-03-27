@@ -27,8 +27,8 @@ public class Vengadromo extends Stage {
     private void CrearGUI() {
         vBox = new VBox();
         for (int i=0; i<vengadores.length; i++){
-            pgbCarriles[i] = new ProgressBar();
-            thrVengadores[i] = new Vengadores(vengadores[i]);
+            pgbCarriles[i] = new ProgressBar(0);
+            thrVengadores[i] = new Vengadores(vengadores[i],pgbCarriles[i]);
             vBox.getChildren().add(pgbCarriles[i]);
         }
         btnIniciar = new Button("Iniciar Carrera");

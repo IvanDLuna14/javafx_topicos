@@ -19,13 +19,14 @@ import sample.Modelos.Conexion;
 import sample.Vistas.Calculadora;
 import sample.Vistas.ListaPeliculas;
 import sample.Vistas.Taquimecanografo;
+import sample.Vistas.Vengadromo;
 
 public class Main extends Application implements EventHandler{
 
     private Scene escena;
     private MenuBar menuBar;
     private Menu menCompetencia1, menCompetencia2, menSalir;
-    private MenuItem itmCalculadora,itmSalir, itmTaqui, itmDatos;
+    private MenuItem itmCalculadora,itmSalir, itmTaqui, itmDatos, itmHilos;
     private BorderPane panel;
 
     @Override
@@ -49,16 +50,6 @@ public class Main extends Application implements EventHandler{
         primaryStage.addEventHandler(WindowEvent.WINDOW_SHOWN,this);
         primaryStage.show();
 
-        new Vengadores("Thor").start();
-        new Vengadores("Capitan America").start();
-        new Vengadores("Hulk").start();
-        new Vengadores("Iron Man").start();
-        new Vengadores("Spider Man").start();
-        new Vengadores("Black Panther").start();
-        new Vengadores("Pantera Rosa :)").start();
-
-
-
     }
 
     public void CreateMenu(){
@@ -80,6 +71,10 @@ public class Main extends Application implements EventHandler{
         itmDatos.setOnAction(event -> EventoItem(4));
         menCompetencia1.getItems().addAll(itmCalculadora,itmTaqui,itmDatos);
 
+        itmHilos = new MenuItem("Vengadromo :)");
+        itmHilos.setOnAction(event->EventoItem(5));
+        menCompetencia2.getItems().add(itmHilos);
+
         itmSalir = new MenuItem("Bye");
         itmSalir.setOnAction(event -> EventoItem(2));
         itmSalir.setAccelerator(KeyCombination.keyCombination("Ctrl+x"));
@@ -99,6 +94,8 @@ public class Main extends Application implements EventHandler{
             case 3: new Taquimecanografo();
                     break;
             case 4: new ListaPeliculas();
+                    break;
+            case 5: new Vengadromo();
         }
     }
 
